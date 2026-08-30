@@ -1,16 +1,21 @@
-from app.models import Chat, Message
+from app.models import Chat, Message, add_message
 
-chat = Chat(messages = [
-    Message(
-        role = 'user',
-        content = 'Что такое AI агент?'
-        ),
+chat = Chat(messages =[Message(
+    role = 'assistant',
+    content='Чем могу помочь?'
+)
+])
+question = ''
+while question!= 'stop':
+    print('user:', end = '')
+    b = input()
+    question = b
+    if(b != 'stop'):
+        add_message(chat, 'user',b)
+        add_message(chat,'assistant','Запрос принят')
+        print(chat.messages)
+    elif b == 'stop':
+        add_message(chat, 'user', b)
 
-    Message(
-        role = 'assistant',
-        content = 'Чтобы то-то то-то итд'
-        )
-        ])
-for message in chat.messages:
-    print(f'{message.role} :{message.content}')
+
 
