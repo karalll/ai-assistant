@@ -1,6 +1,16 @@
-def main():
-    print("Hello from ai-assistant!")
+from app.models import Chat, Message
 
+chat = Chat(messages = [
+    Message(
+        role = 'user',
+        content = 'Что такое AI агент?'
+        ),
 
-if __name__ == "__main__":
-    main()
+    Message(
+        role = 'assistant',
+        content = 'Чтобы то-то то-то итд'
+        )
+        ])
+for message in chat.messages:
+    print(f'{message.role} :{message.content}')
+
