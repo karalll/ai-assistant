@@ -1,10 +1,8 @@
-import asyncio
+from app.config import APP_ENV, APP_NAME, OPENAI_API_KEY
 
-import httpx
+if OPENAI_API_KEY is None:
+    raise RuntimeError("OPENAI_API_KEY is not set")
 
-from app.async_http import get_data
-
-async def main():
-    data = await get_data('https://httpbin.org/get')
-    print(data)
-
+print(APP_NAME)
+print(f'Enviroment: {APP_ENV}')
+print("API key: configured")
