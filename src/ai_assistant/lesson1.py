@@ -10,10 +10,5 @@ while True:
         print("Exiting the chat.")
         break
     else:
-        if userInput.isspace() or userInput == "":
-            add_message(chat, "Пустое сообщение", role="system")
-            print("Empty message. Please enter a valid message.")
-        else: 
-            add_message(chat, userInput, role="user")
-            userInput = input("Enter your message: ")
+        add_message(chat, userInput, role="user")
 print(chat.model_dump_json())

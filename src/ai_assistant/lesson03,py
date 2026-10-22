@@ -1,0 +1,14 @@
+import asyncio
+import httpx
+
+async def get_data(url:str, client: httpx.AsyncClient) -> None:
+    response = await client.get(url)
+    print(url, response.status_code, type(response.json()))
+    
+
+async def main() -> None:
+    async with httpx.AsyncClient() as client:
+        await get_data("https://httpbin.org/json", client)
+
+if __name__ == "__main__":
+    asyncio.run(main())
