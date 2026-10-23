@@ -13,5 +13,5 @@ async def main() -> None:
             get_data(client, "https://httpbin.org/json")
         )
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main()) 
 
