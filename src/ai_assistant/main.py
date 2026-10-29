@@ -1,8 +1,15 @@
 import asyncio
 
-from groq import AsyncGroq, RateLimitError, AuthenticationError, APIConnectionError, APITimeoutError
+from groq import (
+    APIConnectionError,
+    APITimeoutError,
+    AsyncGroq,
+    AuthenticationError,
+    RateLimitError,
+)
 
 from ai_assistant.config import GROQ_API_KEY
+from ai_assistant.models import Chat, Message, add_message
 
 
 async def ask_llm(message:str,client: AsyncGroq) -> str | None:
@@ -29,7 +36,7 @@ async def ask_llm(message:str,client: AsyncGroq) -> str | None:
     except APIConnectionError:
             print("Ошибка соединения")
             return None
-    except Exception:
+    except Exception:  # noqa: BLE001
             print("Непредвиденная ошибка")
             return None
     
